@@ -1,5 +1,5 @@
 #include "Texture2D.h"
-#include "stb_image.h"
+//#include "stb_image.h"
 
 #include <string>
 
@@ -38,7 +38,8 @@ namespace Sinian
 	}
 
 	void Texture2D::TextureFromFile(const char *path)
-	{		
+	{	
+		/*
 		//tell stb_image.h to flip loaded texture's on the y-axis.
 		stbi_set_flip_vertically_on_load(true);
 
@@ -68,7 +69,7 @@ namespace Sinian
 			printf("Texture failed to load at path: %s\n", path);			
 		}
 
-		stbi_image_free(data);
+		stbi_image_free(data); */
 	}
 
 }

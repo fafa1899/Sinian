@@ -139,7 +139,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;STB_IMAGE_IMPLEMENTATION;GLM_ENABLE_EXPERIMENTAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;NOMINMAX;STB_IMAGE_IMPLEMENTATION;GLM_ENABLE_EXPERIMENTAL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalIncludeDirectories>..\..\include</AdditionalIncludeDirectories>
@@ -157,22 +157,43 @@
     <ClInclude Include="BoxGeometry.h" />
     <ClInclude Include="BufferGeometry.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Capabilities.h" />
     <ClInclude Include="Geometry.h" />
+    <ClInclude Include="Image.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
+    <ClInclude Include="MaterialPropertie.h" />
+    <ClInclude Include="MathUtils.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="MeshBasicMaterial.h" />
     <ClInclude Include="Object3D.h" />
+    <ClInclude Include="ProgramParameters.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PerspectiveCamera.h" />
     <ClInclude Include="PlaneGeometry.h" />
     <ClInclude Include="PointLight.h" />
+    <ClInclude Include="Program.h" />
+    <ClInclude Include="Programs.h" />
+    <ClInclude Include="Properties.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderState.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderChunk.h" />
+    <ClInclude Include="ShaderLib.h" />
     <ClInclude Include="ShaderMaterial.h" />
+    <ClInclude Include="ShaderObject.h" />
+    <ClInclude Include="SingleUniform.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Texture2D.h" />
+    <ClInclude Include="TexturePropertie.h" />
+    <ClInclude Include="Textures.h" />
+    <ClInclude Include="Uniform.h" />
+    <ClInclude Include="Uniforms.h" />
+    <ClInclude Include="UniformSetting.h" />
+    <ClInclude Include="UniformsLib.h" />
     <ClInclude Include="Uuid.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,12 +203,17 @@
     <ClCompile Include="BoxGeometry.cpp" />
     <ClCompile Include="BufferGeometry.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Capabilities.cpp" />
     <ClCompile Include="Geometry.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MaterialPropertie.cpp" />
+    <ClCompile Include="MathUtils.cpp" />
     <ClCompile Include="mesh.cpp" />
     <ClCompile Include="MeshBasicMaterial.cpp" />
     <ClCompile Include="Object3D.cpp" />
+    <ClCompile Include="ProgramParameters.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -197,17 +223,37 @@
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PlaneGeometry.cpp" />
     <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Programs.cpp" />
+    <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RenderState.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShaderChunk.cpp" />
+    <ClCompile Include="ShaderLib.cpp" />
+    <ClCompile Include="ShaderLib\MeshBasicFrag.cpp" />
+    <ClCompile Include="ShaderLib\MeshBasicVert.cpp" />
     <ClCompile Include="ShaderMaterial.cpp" />
+    <ClCompile Include="ShaderObject.cpp" />
+    <ClCompile Include="SingleUniform.cpp" />
     <ClCompile Include="SinianViewer.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Texture2D.cpp" />
+    <ClCompile Include="TexturePropertie.cpp" />
+    <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="Uniform.cpp" />
+    <ClCompile Include="Uniforms.cpp" />
+    <ClCompile Include="UniformSetting.cpp" />
+    <ClCompile Include="UniformsLib.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\lib\assimp.lib" />
     <Library Include="..\..\lib\glfw3.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SinianViewer.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

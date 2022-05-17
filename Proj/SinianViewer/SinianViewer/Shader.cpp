@@ -139,6 +139,11 @@ namespace Sinian
 		{				
 			glUniform1i(glGetUniformLocation(ID, name.c_str()), std::any_cast<int>(value));
 		}
+		else if (valueType == typeid(glm::vec3 const *))
+		{
+			glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1,
+				reinterpret_cast<float const*>(std::any_cast<glm::vec3 const *>(value)));				
+		}
 		else if (valueType == typeid(glm::mat4 const * ))
 		{		
 			glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE,

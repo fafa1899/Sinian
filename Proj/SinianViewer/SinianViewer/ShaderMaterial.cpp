@@ -6,6 +6,8 @@ namespace Sinian
 		const std::map<std::string, std::any>& uniforms):
 		Material(vertexShader, fragmentShader)
 	{		
+		type = "ShaderMaterial";
+
 		SetUniforms(uniforms);
 	}
 

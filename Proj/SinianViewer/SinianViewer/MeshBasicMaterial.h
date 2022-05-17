@@ -5,7 +5,7 @@
 
 namespace Sinian
 {
-	class Texture2D;
+	class Texture;
 
 	class MeshBasicMaterial :
 		public Material
@@ -14,11 +14,16 @@ namespace Sinian
 		MeshBasicMaterial();
 		virtual ~MeshBasicMaterial();
 
-		void MapTexture(const std::shared_ptr<Sinian::Texture2D> texture);
-		inline const std::shared_ptr<Sinian::Texture2D> MapTexture() const { return mapTexture; }
+		void Color(const glm::vec3& color);
+		inline const glm::vec3& Color() { return color; }
+
+		void Map(const std::shared_ptr<Sinian::Texture> texture);
+		inline const std::shared_ptr<Sinian::Texture> Map() const { return map; }
+
 
 	protected:
-		std::shared_ptr<Sinian::Texture2D> mapTexture = nullptr;
+		std::shared_ptr<Sinian::Texture> map;
+		glm::vec3 color;
 
 		static std::string vertexShaderSource;
 		static std::string fragmentShaderSource;

@@ -1,5 +1,5 @@
-#ifndef MESH_H
-#define MESH_H
+#ifndef SINIAN_MESH_H
+#define SINIAN_MESH_H
 
 #include <glad/glad.h> // holds all OpenGL type declarations
 
@@ -19,12 +19,12 @@
 
 namespace Sinian
 {
-	struct Texture
-	{
-		unsigned int id;
-		std::string type;
-		std::string path;
-	};
+	//struct Texture
+	//{
+	//	unsigned int id;
+	//	std::string type;
+	//	std::string path;
+	//};
 
 	class Mesh : public Object3D
 	{

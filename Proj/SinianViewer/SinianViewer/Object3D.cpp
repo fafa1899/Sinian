@@ -42,21 +42,22 @@ namespace Sinian
 	{		
 	}
 
+	//ToDO:Release SubNode is Need
 	Object3D::~Object3D()
 	{
 	}
 
-	static void PrintMat(const glm::mat4& m)
-	{
-		for (int i = 0; i < 4; i++)
-		{
-			for (int j = 0; j < 4; j++)
-			{
-				printf("%.9lf\t", m[i][j]);
-			}
-			printf("\n");
-		}
-	}
+	//static void PrintMat(const glm::mat4& m)
+	//{
+	//	for (int i = 0; i < 4; i++)
+	//	{
+	//		for (int j = 0; j < 4; j++)
+	//		{
+	//			printf("%.9lf\t", m[i][j]);
+	//		}
+	//		printf("\n");
+	//	}
+	//}
 	
 	void Object3D::Add(std::shared_ptr<Object3D> object)
 	{
