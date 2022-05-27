@@ -1,0 +1,2 @@
+#define SINIAN_API __declspec(dllexport)
+#define SINIAN_API __declspec(dllimport)
