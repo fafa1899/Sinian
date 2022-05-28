@@ -53,3 +53,5 @@ compile_commands.json
 
 Proj/Test/*
 Proj/Sinian/.vs/*
+Doc/*
+x64

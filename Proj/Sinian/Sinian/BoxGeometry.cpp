@@ -14,12 +14,12 @@ namespace Sinian
 		float extentZ = static_cast<float>(depth / 2.0);
 
 		float verticesTmp[] = {
-			extentX,  extentY, -extentZ,  1.0f, 1.0f,
-			extentX, -extentY, -extentZ,  1.0f, 0.0f,
-			-extentX, -extentY, -extentZ,  0.0f, 0.0f,
-			-extentX, -extentY, -extentZ,  0.0f, 0.0f,
-			-extentX,  extentY, -extentZ,  0.0f, 1.0f,
-			extentX,  extentY, -extentZ,  1.0f, 1.0f,
+			extentX,  extentY, -extentZ,  0.0f, 1.0f,
+			extentX, -extentY, -extentZ,  0.0f, 0.0f,	
+			-extentX, -extentY, -extentZ,  1.0f, 0.0f,
+			-extentX, -extentY, -extentZ,  1.0f, 0.0f,
+			-extentX,  extentY, -extentZ,  1.0f, 1.0f,
+			extentX,  extentY, -extentZ,  0.0f, 1.0f,
 
 			-extentX, -extentY,  extentZ,  0.0f, 0.0f,
 			 extentX, -extentY,  extentZ,  1.0f, 0.0f,
@@ -28,19 +28,19 @@ namespace Sinian
 			-extentX,  extentY,  extentZ,  0.0f, 1.0f,
 			-extentX, -extentY,  extentZ,  0.0f, 0.0f,
 
-			-extentX,  extentY,  extentZ,  1.0f, 0.0f,
-			-extentX,  extentY, -extentZ,  1.0f, 1.0f,
-			-extentX, -extentY, -extentZ,  0.0f, 1.0f,
-			-extentX, -extentY, -extentZ,  0.0f, 1.0f,
-			-extentX, -extentY,  extentZ,  0.0f, 0.0f,
-			-extentX,  extentY,  extentZ,  1.0f, 0.0f,
+			-extentX,  extentY,  extentZ,  1.0f, 1.0f,
+			-extentX,  extentY, -extentZ,  0.0f, 1.0f,
+			-extentX, -extentY, -extentZ,  0.0f, 0.0f,
+			-extentX, -extentY, -extentZ,  0.0f, 0.0f,
+			-extentX, -extentY,  extentZ,  1.0f, 0.0f,
+			-extentX,  extentY,  extentZ,  1.0f, 1.0f,
 
-			 extentX, -extentY, -extentZ,  0.0f, 1.0f,
+			 extentX, -extentY, -extentZ,  1.0f, 0.0f,
 			 extentX,  extentY, -extentZ,  1.0f, 1.0f,
-			 extentX,  extentY,  extentZ,  1.0f, 0.0f,
-			 extentX,  extentY,  extentZ,  1.0f, 0.0f,
+			 extentX,  extentY,  extentZ,  0.0f, 1.0f,
+			 extentX,  extentY,  extentZ,  0.0f, 1.0f,
 			 extentX, -extentY,  extentZ,  0.0f, 0.0f,
-			 extentX, -extentY, -extentZ,  0.0f, 1.0f,
+			 extentX, -extentY, -extentZ,  1.0f, 0.0f,
 
 			-extentX, -extentY, -extentZ,  0.0f, 1.0f,
 			 extentX, -extentY, -extentZ,  1.0f, 1.0f,
@@ -57,11 +57,25 @@ namespace Sinian
 			extentX,  extentY,  extentZ,  1.0f, 0.0f,
 		};
 		
+		float faceNormals[] = {
+			0.0f, 0.0f, -1.0f, 
+			0.0f, 0.0f, 1.0f, 
+			-1.0f, 0.0f, 0.0f,  
+			1.0f, 0.0f, 0.0f, 
+			0.0f, -1.0f, 0.0f,
+			0.0f, 1.0f, 0.0f,
+		};
+
 		vector<Vertex> vertices(36);
 		for (size_t vi = 0; vi < vertices.size(); vi++)
 		{
 			vertices[vi].Position = glm::vec3(verticesTmp[vi * 5], verticesTmp[vi * 5 + 1], verticesTmp[vi * 5 + 2]);
 			vertices[vi].TexCoords = glm::vec2(verticesTmp[vi * 5 + 3], verticesTmp[vi * 5 + 4]);
+            size_t fid = vi / 6;
+            vertices[vi].Normal = glm::vec3(faceNormals[fid * 3], faceNormals[fid * 3 + 1],
+                          faceNormals[fid * 3 + 2]);
+            //printf("%lf\t,%lf\t,%lf\n", faceNormals[fid * 3],
+            //       faceNormals[fid * 3 + 1], faceNormals[fid * 3 + 2]);
 		}
 				
 		SetAttribute(vertices);	
