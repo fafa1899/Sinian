@@ -1,7 +1,7 @@
 #include "Lights.h"
 #include "Camera.h"
-#include "Light.h"
-#include "PointLight.h"
+#include "Lights/Light.h"
+#include "Lights/PointLight.h"
 
 using namespace std;
 
@@ -36,7 +36,12 @@ void Lights::Setup(const std::vector<std::shared_ptr<Light>>& lightsArray,
 
     const glm::mat4& viewMatrix = camera->ViewMatrix();
 
-    if (typeName == "PointLight") {
+	if (typeName == "AmbientLight") {
+      r += color.r * intensity;
+      g += color.g * intensity;
+      b += color.b * intensity;
+    }
+    else if (typeName == "PointLight") {
       shared_ptr<PointLight> pointLight =
           static_pointer_cast<PointLight>(light);
 
@@ -46,7 +51,7 @@ void Lights::Setup(const std::vector<std::shared_ptr<Light>>& lightsArray,
       uniforms["position"].value =
           glm::vec3(viewCoord.x / viewCoord.w, viewCoord.y / viewCoord.w,
                     viewCoord.z / viewCoord.w);
-     
+
       uniforms["color"].value = pointLight->Color() * pointLight->Intensity();
       uniforms["distance"].value = pointLight->Distance();
       uniforms["decay"].value = pointLight->Decay();

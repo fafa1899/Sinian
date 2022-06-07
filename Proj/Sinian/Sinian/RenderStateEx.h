@@ -1,7 +1,7 @@
 #ifndef SINIAN_RENDERSTATEEX_H
 #define SINIAN_RENDERSTATEEx_H
 
-#include "Light.h"
+#include "Lights/Light.h"
 #include "Lights.h"
 
 #include <memory>

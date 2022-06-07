@@ -82,7 +82,7 @@ void Renderer::SetSize(int width, int height) {
 
 void Renderer::ProjectObject(std::shared_ptr<Object3D> object) {
   // The actual type is already known, use static casts to save performance.
-  if (object->Type() == "PointLight") {
+  if (object->Type() == "AmbientLight" || object->Type() == "PointLight") {
     currentRenderState->PushLight(static_pointer_cast<Light>(object));
   }
 

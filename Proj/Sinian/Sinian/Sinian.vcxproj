@@ -176,9 +176,11 @@
     <ClInclude Include="Capabilities.h" />
     <ClInclude Include="Geometry.h" />
     <ClInclude Include="Image.h" />
-    <ClInclude Include="Light.h" />
     <ClInclude Include="Lights.h" />
     <ClInclude Include="LightState.h" />
+    <ClInclude Include="Lights\AmbientLight.h" />
+    <ClInclude Include="Lights\Light.h" />
+    <ClInclude Include="Lights\PointLight.h" />
     <ClInclude Include="LightUniforms.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MaterialPropertie.h" />
@@ -190,7 +192,6 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="PerspectiveCamera.h" />
     <ClInclude Include="PlaneGeometry.h" />
-    <ClInclude Include="PointLight.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ProgramParameters.h" />
     <ClInclude Include="Programs.h" />
@@ -229,9 +230,11 @@
     <ClCompile Include="Capabilities.cpp" />
     <ClCompile Include="Geometry.cpp" />
     <ClCompile Include="Image.cpp" />
-    <ClCompile Include="Light.cpp" />
     <ClCompile Include="Lights.cpp" />
     <ClCompile Include="LightState.cpp" />
+    <ClCompile Include="Lights\AmbientLight.cpp" />
+    <ClCompile Include="Lights\Light.cpp" />
+    <ClCompile Include="Lights\PointLight.cpp" />
     <ClCompile Include="LightUniforms.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MaterialPropertie.cpp" />
@@ -243,7 +246,6 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="PerspectiveCamera.cpp" />
     <ClCompile Include="PlaneGeometry.cpp" />
-    <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ProgramParameters.cpp" />
     <ClCompile Include="Programs.cpp" />

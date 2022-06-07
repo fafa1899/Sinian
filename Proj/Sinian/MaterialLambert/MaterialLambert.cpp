@@ -2,11 +2,12 @@
 //
 
 #include <BoxGeometry.h>
+#include <Lights/AmbientLight.h>
+#include <Lights/PointLight.h>
 #include <Mesh.h>
 #include <MeshBasicMaterial.h>
 #include <MeshLambertMaterial.h>
 #include <PerspectiveCamera.h>
-#include <PointLight.h>
 #include <Renderer.h>
 #include <Scene.h>
 #include <Texture.h>
@@ -52,7 +53,7 @@ shared_ptr<Mesh> CreateCubeMesh() {
   const char* texturePath1 = "D:/MyHub/Sinian/Resources/Textures/container.jpg";
 
   shared_ptr<Texture> texture = Texture::ReadFile2Texture(texturePath1);
-  //std::shared_ptr<MeshBasicMaterial> material =
+  // std::shared_ptr<MeshBasicMaterial> material =
   //    make_shared<MeshBasicMaterial>();
   std::shared_ptr<MeshLambertMaterial> material =
       make_shared<MeshLambertMaterial>();
@@ -79,6 +80,12 @@ shared_ptr<PointLight> CreatePointLight() {
   pointLight->Add(mesh);
 
   return pointLight;
+}
+
+shared_ptr<AmbientLight> CreateAmbientLight() {
+  shared_ptr<AmbientLight> ambientLight =
+      make_shared<AmbientLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.2f);
+  return ambientLight;
 }
 
 int main() {
@@ -123,6 +130,8 @@ int main() {
 
   shared_ptr<PointLight> pointLight = CreatePointLight();
   scene->Add(pointLight);
+
+  scene->Add(CreateAmbientLight());
 
   // Renderer
   renderer = make_shared<Renderer>();

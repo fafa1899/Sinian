@@ -1,7 +1,7 @@
 #ifndef SINIAN_LIGHT_H
 #define SINIAN_LIGHT_H
 
-#include "Object3D.h"
+#include "../Object3D.h"
 
 namespace Sinian {
 

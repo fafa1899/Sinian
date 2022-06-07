@@ -19,6 +19,9 @@
     <Filter Include="ShaderChunk">
       <UniqueIdentifier>{6637c41c-0863-4bc3-bd86-2f089841867e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lights">
+      <UniqueIdentifier>{844df7e7-9e7b-484e-8d03-c42a667d20a0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -45,9 +48,6 @@
     <ClInclude Include="Image.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Light.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Material.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -70,9 +70,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="PlaneGeometry.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PointLight.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Program.h">
@@ -177,6 +174,15 @@
     <ClInclude Include="StructuredUniform.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Lights\AmbientLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\PointLight.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights\Light.h">
+      <Filter>Lights</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoxGeometry.cpp">
@@ -195,9 +201,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Image.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Light.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Material.cpp">
@@ -222,9 +225,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PlaneGeometry.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="PointLight.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp">
@@ -337,6 +337,15 @@
     </ClCompile>
     <ClCompile Include="StructuredUniform.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\AmbientLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\PointLight.cpp">
+      <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights\Light.cpp">
+      <Filter>Lights</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

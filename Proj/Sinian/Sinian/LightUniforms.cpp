@@ -1,5 +1,5 @@
 #include "LightUniforms.h"
-#include "Light.h"
+#include "Lights/Light.h"
 
 namespace Sinian {
 
