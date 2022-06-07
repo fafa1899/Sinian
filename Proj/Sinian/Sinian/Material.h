@@ -13,9 +13,7 @@ class Texture2D;
 
 class SINIAN_API Material {
  public:
-  Material(const char *vertexPath, const char *fragmentPath);
-  Material(const std::string &vertexShaderSource,
-           const std::string &fragmentShaderSourc);
+  Material();
   virtual ~Material();
 
   void Update();
@@ -33,8 +31,8 @@ class SINIAN_API Material {
     return textures;
   }
 
-  void SetUniform(const std::string &name, std::any value);
-  void SetUniforms(const std::map<std::string, std::any> &uniforms);
+  //void SetUniform(const std::string &name, std::any value);
+  //void SetUniforms(const std::map<std::string, std::any> &uniforms);
 
   const bool &DepthTest() { return renderState.depthTest.enabled; }
   void DepthTest(const bool &enabled) {
@@ -61,9 +59,7 @@ class SINIAN_API Material {
   // automatically set to true when instancing a new material.
   bool needsUpdate;
 
-  void SetUniformValue(const std::string &name, std::any value);
-
-  Shader shader;
+  //void SetUniformValue(const std::string &name, std::any value);
 
   std::map<std::string, int> textureNameAndTextureUnit;
   std::vector<std::shared_ptr<Texture2D>> textures;

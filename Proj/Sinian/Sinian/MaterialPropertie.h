@@ -12,9 +12,13 @@ class Uniform;
 
 struct MaterialPropertie {
   int version = -1;
+
+  bool needsLights = false;
+  int lightsStateVersion = -1;
+  
   std::shared_ptr<Program> program = nullptr;
   std::shared_ptr<ShaderObject> shaderObject = nullptr;
-  std::vector<std::shared_ptr<Uniform>> uniformsList;
+  std::vector<std::shared_ptr<Uniform>> uniformsList;  
 };
 }  // namespace Sinian
 

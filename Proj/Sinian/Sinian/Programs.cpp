@@ -1,6 +1,8 @@
 #include "Programs.h"
+#include "LightState.h"
 #include "Material.h"
 #include "MeshBasicMaterial.h"
+#include "MeshLambertMaterial.h"
 #include "Program.h"
 #include "ProgramParameters.h"
 #include "ShaderLib.h"
@@ -12,10 +14,11 @@ namespace Sinian {
 Programs::Programs() {}
 
 std::map<std::string, std::string> Programs::shaderIDs = {
-    {"MeshBasicMaterial", "basic"}};
+    {"MeshBasicMaterial", "basic"}, {"MeshLambertMaterial", "lambert"}};
 
 std::shared_ptr<ProgramParameters> Programs::GetParameters(
-    std::shared_ptr<Material> material) {
+    std::shared_ptr<Material> material, const LightState& lightState) {
+  //
   shared_ptr<ProgramParameters> parameters = make_shared<ProgramParameters>();
 
   string shaderID;
@@ -30,16 +33,25 @@ std::shared_ptr<ProgramParameters> Programs::GetParameters(
   parameters->shaderObject = shaderobject;
 
   if (material->Type() == "MeshBasicMaterial") {
+    //
     std::shared_ptr<MeshBasicMaterial> meshBasicMaterial =
         static_pointer_cast<MeshBasicMaterial>(material);
     parameters->map = meshBasicMaterial->Map() ? true : false;
+  } else if (material->Type() == "MeshLambertMaterial") {
+    //
+    std::shared_ptr<MeshLambertMaterial> meshLambertMaterial =
+        static_pointer_cast<MeshLambertMaterial>(material);
+    parameters->map = meshLambertMaterial->Map() ? true : false;
   }
+
+  parameters->numPointLights = int(lightState.point.size());
 
   return parameters;
 }
 
 std::string Programs::GetProgramCacheKey(
     std::shared_ptr<ProgramParameters> parameters) {
+  //
   string cacheKey;
 
   if (parameters->shaderID.empty()) {
@@ -62,7 +74,9 @@ std::shared_ptr<Program> Programs::AcquireProgram(
     const std::string& cacheKey) {
   const auto& iter = programs.find(cacheKey);
   if (iter != programs.end()) {
-    return iter->second;
+    auto program = iter->second;
+    program->UsedTimes(program->UsedTimes() + 1);
+    return program;
   }
 
   shared_ptr<Program> program = make_shared<Program>(cacheKey, parameters);
@@ -80,6 +94,19 @@ std::shared_ptr<ShaderObject> Programs::GetShaderObject(
   }
 
   return shaderobject;
+}
+
+void Programs::ReleaseProgram(std::shared_ptr<Program> program) {
+  program->UsedTimes(program->UsedTimes() - 1);
+  if (program->UsedTimes() == 0) {
+    const auto& iter = programs.find(program->CacheKey());
+    if (iter != programs.end()) {
+      programs.erase(iter);
+    }
+
+    // Free WebGL resources
+    // program.destroy();
+  }
 }
 
 }  // namespace Sinian

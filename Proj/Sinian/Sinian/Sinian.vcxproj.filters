@@ -156,6 +156,27 @@
     <ClInclude Include="MeshLambertMaterial.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="RenderStateEx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderStatesEx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Lights.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LightUniforms.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LightState.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StlStringExpand.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StructuredUniform.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoxGeometry.cpp">
@@ -288,6 +309,33 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MeshLambertMaterial.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLib\MeshLambertFrag.cpp">
+      <Filter>ShaderLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLib\MeshLambertVert.cpp">
+      <Filter>ShaderLib</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderStateEx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderStatesEx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Lights.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LightUniforms.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LightState.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StlStringExpand.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StructuredUniform.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

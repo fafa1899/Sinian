@@ -15,6 +15,10 @@ class SINIAN_API Object3D : public std::enable_shared_from_this<Object3D> {
   Object3D(std::shared_ptr<Object3D> parent = nullptr);
   virtual ~Object3D();
 
+  inline const int& Id() const { return id; }
+
+  inline const std::string& Type() const { return type; }
+
   inline const std::string& Uuid() const { return uuid; }
   inline const std::map<std::string, std::shared_ptr<Object3D>>& Children()
       const {
@@ -84,6 +88,21 @@ class SINIAN_API Object3D : public std::enable_shared_from_this<Object3D> {
   const glm::vec3& Up() { return up; }
   const glm::vec3& Right() { return right; }
 
+  // This is passed to the shader and used to calculate the position of the
+  // object.
+  const glm::mat4& ModelViewMatrix() const { return modelViewMatrix; }
+  void ModelViewMatrix(const glm::mat4& modelViewMatrix) {
+    this->modelViewMatrix = modelViewMatrix;
+  }
+
+  // This is passed to the shader and used to calculate lighting for the object.
+  // It is the transpose of the inverse of the upper left 3x3 sub-matrix of this
+  // object's modelViewMatrix.
+  const glm::mat3& NormalMatrix() const { return normalMatrix; }
+  void NormalMatrix(const glm::mat3& normalMatrix) {
+    this->normalMatrix = normalMatrix;
+  }
+  
  protected:
   void CalculateChildrenWorld();
 
@@ -92,6 +111,11 @@ class SINIAN_API Object3D : public std::enable_shared_from_this<Object3D> {
 
   void UpdateLocalModelFromTRS();
   void UpdateWorldModelFromTRS();
+
+  static int object3DId;
+
+  int id;
+  std::string type;
 
   std::string uuid;
   std::shared_ptr<Object3D> parent;
@@ -125,12 +149,12 @@ class SINIAN_API Object3D : public std::enable_shared_from_this<Object3D> {
   glm::vec3 localEulerAngles;
   glm::vec3 localScale;
 
-  // glm::vec3 parentPosition;
-  // glm::mat4 parentModelMatrix;
-
   glm::vec3 front;  // Front Vector In World Space
   glm::vec3 up;     // Up Vector of View Coordinate System in World Space
   glm::vec3 right;  // Right Vector In World Space
+
+  glm::mat4 modelViewMatrix;
+  glm::mat3 normalMatrix;
 };
 
 }  // namespace Sinian

@@ -44,7 +44,7 @@ namespace Sinian
 		"}\n";
 
 	MeshBasicMaterial::MeshBasicMaterial() : 
-		Material(vertexShaderSource, fragmentShaderSource),		
+		Material(),		
 		map(nullptr),
 		color(1.0f, 1.0f, 1.0f)
 	{	

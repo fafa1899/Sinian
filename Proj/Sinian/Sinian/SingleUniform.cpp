@@ -19,6 +19,10 @@ void SingleUniform::SetValue(const std::any& v,
       SetValueV3f(std::any_cast<glm::vec3>(v));
       break;
     }
+    case GL_FLOAT_MAT3: {
+      SetValueM3(std::any_cast<glm::mat3>(v));
+      break;
+    }
     case GL_FLOAT_MAT4: {
       SetValueM4(std::any_cast<glm::mat4>(v));
       break;
@@ -61,6 +65,15 @@ void SingleUniform::SetValueV3f(const glm::vec3& v) {
   }
 
   glUniform3fv(addr, 1, &v[0]);
+  cache = v;
+}
+
+void SingleUniform::SetValueM3(const glm::mat3& v) { 
+  if (cache.has_value() && std::any_cast<glm::mat3>(cache) == v) {
+    return;
+  }
+
+  glUniformMatrix3fv(addr, 1, GL_FALSE, &(v[0][0]));
   cache = v;
 }
 

@@ -1,6 +1,7 @@
 #include "Program.h"
 #include "ProgramParameters.h"
 #include "ShaderObject.h"
+#include "StlStringExpand.h"
 #include "Uniforms.h"
 
 #include <glad/glad.h>
@@ -15,31 +16,56 @@ Program::Program(const std::string &cacheKey,
                  std::shared_ptr<ProgramParameters> parameters)
     : cacheKey(cacheKey),
       name(parameters->shaderObject->name),
+      usedTimes(1),
       cachedUniforms(nullptr) {
-  const string &vertexShader = parameters->shaderObject->vertexShader;
-  const string &fragmentShader = parameters->shaderObject->fragmentShader;
+  string &vertexShader = parameters->shaderObject->vertexShader;
+  string &fragmentShader = parameters->shaderObject->fragmentShader;
 
   string prefixVertex;
   string prefixFragment;
 
   if (false) {
   } else {
-    // prefixVertex = ;
-    prefixFragment =
-        "#define SHADER_NAME " + parameters->shaderObject->name + "\n";
-    if (parameters->map) {
-      prefixFragment = prefixFragment + "#define USE_MAP\n";
+    {
+      vector<string> prefixVertexTmp;
+      prefixVertexTmp.push_back("#define SHADER_NAME " +
+                                parameters->shaderObject->name);
+	  
+      prefixVertexTmp.push_back("uniform mat4 modelMatrix;");
+      prefixVertexTmp.push_back("uniform mat4 modelViewMatrix;");
+      prefixVertexTmp.push_back("uniform mat4 projectionMatrix;");
+      prefixVertexTmp.push_back("uniform mat4 viewMatrix;");
+      prefixVertexTmp.push_back("uniform mat3 normalMatrix;");
+  	  
+      prefixVertex = StlStringExpand::StringJoin(prefixVertexTmp, '\n');    
+    }
+
+    {
+      prefixFragment =
+          "#define SHADER_NAME " + parameters->shaderObject->name + "\n";
+
+      if (parameters->map) {
+        prefixFragment = prefixFragment + "#define USE_MAP\n";
+      }
     }
   }
 
   // add version
-  { prefixFragment = "#version 330 core\n" + prefixFragment; }
+  {
+    prefixVertex = "#version 330 core\n" + prefixVertex;
+    prefixFragment = "#version 330 core\n" + prefixFragment;
+  }
 
   // vertexShader = resolveIncludes(vertexShader);
+  vertexShader = ReplaceLightNums(vertexShader, parameters);
+
   // fragmentShader = resolveIncludes(fragmentShader);
+  fragmentShader = ReplaceLightNums(fragmentShader, parameters);
 
   string vertexGlsl = prefixVertex + vertexShader;
   string fragmentGlsl = prefixFragment + fragmentShader;
+
+  //cout << vertexGlsl << endl;
 
   // shader Program
   program = glCreateProgram();
@@ -65,6 +91,12 @@ std::shared_ptr<Uniforms> Program::GetUniforms() {
     cachedUniforms = make_shared<Uniforms>(program);
   }
   return cachedUniforms;
+}
+
+string &Program::ReplaceLightNums(
+    string &shaderString, std::shared_ptr<ProgramParameters> parameters) {
+  return StlStringExpand::ReplaceString(shaderString, "NUM_POINT_LIGHTS",
+                                        to_string(parameters->numPointLights));
 }
 
 unsigned int Program::CompileShader(string vertexCode,

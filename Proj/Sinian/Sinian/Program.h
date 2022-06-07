@@ -18,10 +18,15 @@ class Program {
 
   Program(const Program&) = delete;
   Program& operator=(const Program&) = delete;
-  Program(Program&& t) = delete;               // noexcept;
+  Program(Program&& t) = delete;             // noexcept;
   Program& operator=(Program&& t) = delete;  // noexcept;
 
-  inline const unsigned int& ProgramId() const{ return program;}
+  inline const std::string& CacheKey() const { return cacheKey; }
+
+  inline const int& UsedTimes() const { return usedTimes; }
+  void UsedTimes(const int& usedTimes) { this->usedTimes = usedTimes; }
+
+  inline const unsigned int& ProgramId() const { return program; }
 
   std::shared_ptr<Uniforms> GetUniforms();
 
@@ -30,9 +35,14 @@ class Program {
                          // for looking up compiled programs from cache.
   std::string name;
 
+  int usedTimes;
+
   unsigned int program;
 
   std::shared_ptr<Uniforms> cachedUniforms;
+
+  std::string& ReplaceLightNums(std::string& shaderString,
+                           std::shared_ptr<ProgramParameters> parameters);
 
   unsigned int CompileShader(std::string vertexCode, unsigned int shaderType);
 

@@ -3,21 +3,21 @@
 
 #include <string>
 
-namespace Sinian
-{
-	struct ShaderObject;
+namespace Sinian {
+struct ShaderObject;
 
-	struct ProgramParameters
-	{
-		std::string shaderID;
-		
-		std::shared_ptr<ShaderObject> shaderObject = nullptr;
+struct ProgramParameters {
+  std::string shaderID;
 
-		bool map = false;
+  std::shared_ptr<ShaderObject> shaderObject = nullptr;
 
-		std::string Convert2KeyString();
-	};
+  bool map = false;
 
-}
+  int numPointLights = 0;
+
+  std::string Convert2KeyString();
+};
+
+}  // namespace Sinian
 
 #endif

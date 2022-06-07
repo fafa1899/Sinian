@@ -6,8 +6,7 @@ namespace Sinian {
 class MathUtils{ 
 
 public:
-  static bool IsPowerOfTwo(int value);
- 
+  static bool IsPowerOfTwo(int value);  
 };
 
 }

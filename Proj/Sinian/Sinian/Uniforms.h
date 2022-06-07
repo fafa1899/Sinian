@@ -36,6 +36,9 @@ class Uniforms {
                 std::shared_ptr<Textures> textures = nullptr);
 
  private:
+  void ParseUniform(const std::string& uniformName,
+                                        unsigned int type, int addr);
+
   void AddUniform(std::shared_ptr<Uniform> uniformObject);
 
   std::vector<std::shared_ptr<Uniform>> seq;

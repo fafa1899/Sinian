@@ -21,6 +21,7 @@ class ShaderLib {
 
   void InitShaders();
   std::shared_ptr<ShaderObject> InitBasic();
+  std::shared_ptr<ShaderObject> InitLambert();
 
   std::map<std::string, std::shared_ptr<ShaderObject>> shaders;
 };
