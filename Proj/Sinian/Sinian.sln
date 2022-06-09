@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MaterialLambert", "Material
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StringTest", "StringTest\StringTest.vcxproj", "{0579238F-9FF7-448F-876D-3BA62F3A7244}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MaterialPhong", "MaterialPhong\MaterialPhong.vcxproj", "{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -65,6 +67,14 @@ Global
 		{0579238F-9FF7-448F-876D-3BA62F3A7244}.Release|x64.Build.0 = Release|x64
 		{0579238F-9FF7-448F-876D-3BA62F3A7244}.Release|x86.ActiveCfg = Release|Win32
 		{0579238F-9FF7-448F-876D-3BA62F3A7244}.Release|x86.Build.0 = Release|Win32
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}.Debug|x64.ActiveCfg = Debug|x64
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}.Debug|x64.Build.0 = Debug|x64
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}.Debug|x86.ActiveCfg = Debug|Win32
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}.Debug|x86.Build.0 = Debug|Win32
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}.Release|x64.ActiveCfg = Release|x64
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}.Release|x64.Build.0 = Release|x64
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}.Release|x86.ActiveCfg = Release|Win32
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +85,7 @@ Global
 		{88DCDEA5-5474-4F56-873A-E475E97C0953} = {AE34EA70-5CBB-4A1C-9630-5020D5E02B49}
 		{F3C178B3-79E5-4808-9C99-50F5821B74A1} = {AE34EA70-5CBB-4A1C-9630-5020D5E02B49}
 		{0579238F-9FF7-448F-876D-3BA62F3A7244} = {AE34EA70-5CBB-4A1C-9630-5020D5E02B49}
+		{4FF96BE3-A04F-45A9-B525-1638EC1B60EB} = {AE34EA70-5CBB-4A1C-9630-5020D5E02B49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {610F85C9-17F8-4CAB-BD6B-43A0E324726E}

@@ -23,6 +23,10 @@ class UniformsLib {
     return common;
   }
 
+  inline const std::map<std::string, UniformSetting>& Specularmap() const {
+    return common;
+  }
+
   inline const std::map<std::string, UniformSetting>& Lights() const {
     return lights;
   }
@@ -31,6 +35,8 @@ class UniformsLib {
   UniformsLib();
 
   std::map<std::string, UniformSetting> common;
+  std::map<std::string, UniformSetting> specularmap;
+
   std::map<std::string, UniformSetting> lights;
 };
 

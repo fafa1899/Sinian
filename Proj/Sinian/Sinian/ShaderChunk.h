@@ -12,6 +12,9 @@ class ShaderChunk {
 
   static std::string meshLambertVert;
   static std::string meshLambertFrag;
+
+  static std::string meshPhongVert;
+  static std::string meshPhongFrag;
 };
 
 }  // namespace Sinian

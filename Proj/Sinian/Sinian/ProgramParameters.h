@@ -12,6 +12,7 @@ struct ProgramParameters {
   std::shared_ptr<ShaderObject> shaderObject = nullptr;
 
   bool map = false;
+  bool specularMap = false;
 
   int numPointLights = 0;
 

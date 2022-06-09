@@ -22,6 +22,9 @@
     <Filter Include="Lights">
       <UniqueIdentifier>{844df7e7-9e7b-484e-8d03-c42a667d20a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Materials">
+      <UniqueIdentifier>{9ef79aac-29ab-4382-95a8-83235fa3d61a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
@@ -48,16 +51,10 @@
     <ClInclude Include="Image.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="MaterialPropertie.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="MathUtils.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshBasicMaterial.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Object3D.h">
@@ -105,9 +102,6 @@
     <ClInclude Include="ShaderLib.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ShaderMaterial.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="ShaderObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -150,9 +144,6 @@
     <ClInclude Include="Mesh.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MeshLambertMaterial.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="RenderStateEx.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -183,6 +174,18 @@
     <ClInclude Include="Lights\Light.h">
       <Filter>Lights</Filter>
     </ClInclude>
+    <ClInclude Include="Materials\MeshPhongMaterial.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\MeshBasicMaterial.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\Material.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="Materials\MeshLambertMaterial.h">
+      <Filter>Materials</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BoxGeometry.cpp">
@@ -203,16 +206,10 @@
     <ClCompile Include="Image.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="MaterialPropertie.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="MathUtils.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshBasicMaterial.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Object3D.cpp">
@@ -255,9 +252,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ShaderLib.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ShaderMaterial.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ShaderObject.cpp">
@@ -308,9 +302,6 @@
     <ClCompile Include="SinianApi.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MeshLambertMaterial.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="ShaderLib\MeshLambertFrag.cpp">
       <Filter>ShaderLib</Filter>
     </ClCompile>
@@ -346,6 +337,24 @@
     </ClCompile>
     <ClCompile Include="Lights\Light.cpp">
       <Filter>Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\MeshPhongMaterial.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\MeshBasicMaterial.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\Material.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="Materials\MeshLambertMaterial.cpp">
+      <Filter>Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLib\MeshPhongFrag.cpp">
+      <Filter>ShaderLib</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderLib\MeshPhongVert.cpp">
+      <Filter>ShaderLib</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,8 +1,9 @@
 #include "Renderer.h"
 #include "MaterialPropertie.h"
+#include "Materials/MeshBasicMaterial.h"
+#include "Materials/MeshLambertMaterial.h"
+#include "Materials/MeshPhongMaterial.h"
 #include "Mesh.h"
-#include "MeshBasicMaterial.h"
-#include "MeshLambertMaterial.h"
 #include "Program.h"
 #include "ProgramParameters.h"
 #include "Programs.h"
@@ -16,6 +17,7 @@
 #include "UniformSetting.h"
 #include "Uniforms.h"
 
+#include <algorithm>
 #include <iostream>
 
 using namespace std;
@@ -159,6 +161,30 @@ void RefreshUniformsCommon(std::map<std::string, UniformSetting>& uniforms,
       it->second.value = material->Map();
     }
   }
+
+  {
+    const auto& it = uniforms.find("specularMap");
+    if (it != uniforms.end()) {
+      it->second.value = material->SpecularMap();
+    }
+  }
+}
+
+void RefreshUniformsPhong(std::map<std::string, UniformSetting>& uniforms,
+                          std::shared_ptr<MeshPhongMaterial> material) {
+  {
+    const auto& it = uniforms.find("specular");
+    if (it != uniforms.end()) {
+      it->second.value = material->Specular();
+    }
+  }
+
+  {
+    const auto& it = uniforms.find("shininess");
+    if (it != uniforms.end()) {
+      it->second.value = std::max<float>(material->Shininess(), float(1e-4));
+    }
+  }
 }
 
 void Renderer::SetProgram(std::shared_ptr<Material> material,
@@ -249,6 +275,10 @@ void Renderer::SetProgram(std::shared_ptr<Material> material,
       RefreshUniformsCommon<MeshLambertMaterial>(
           m_uniforms, static_pointer_cast<MeshLambertMaterial>(material));
       // refreshUniformsLambert(m_uniforms, material);
+    } else if (material->Type() == "MeshPhongMaterial") {
+      auto phongMaterial = static_pointer_cast<MeshPhongMaterial>(material);
+      RefreshUniformsCommon<MeshPhongMaterial>(m_uniforms, phongMaterial);
+      RefreshUniformsPhong(m_uniforms, phongMaterial);
     }
   }
 
@@ -330,7 +360,8 @@ void Renderer::InitMaterial(
 }
 
 bool Renderer::MaterialNeedsLights(std::shared_ptr<Material> material) {
-  return material->Type() == "MeshLambertMaterial";
+  return material->Type() == "MeshLambertMaterial" ||
+         material->Type() == "MeshPhongMaterial";
 }
 
 // If uniforms are marked as clean, they don't need to be loaded to the GPU.

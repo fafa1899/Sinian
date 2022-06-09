@@ -14,7 +14,7 @@
 #include "shader.h"
 #include "Texture2D.h"
 #include "BufferGeometry.h"
-#include "Material.h"
+#include "Materials/Material.h"
 #include "Object3D.h"
 
 namespace Sinian

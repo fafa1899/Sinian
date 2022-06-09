@@ -5,8 +5,8 @@
 #include <Lights/AmbientLight.h>
 #include <Lights/PointLight.h>
 #include <Mesh.h>
-#include <MeshBasicMaterial.h>
-#include <MeshLambertMaterial.h>
+#include <Materials/MeshBasicMaterial.h>
+#include <Materials/MeshLambertMaterial.h>
 #include <PerspectiveCamera.h>
 #include <Renderer.h>
 #include <Scene.h>

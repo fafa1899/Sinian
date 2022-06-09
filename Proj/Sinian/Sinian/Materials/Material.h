@@ -4,9 +4,9 @@
 #include <map>
 #include <vector>
 
-#include "RenderState.h"
-#include "Shader.h"
-#include "SinianApi.h"
+#include "../RenderState.h"
+#include "../Shader.h"
+#include "../SinianApi.h"
 
 namespace Sinian {
 class Texture2D;

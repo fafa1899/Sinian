@@ -1,15 +1,19 @@
-﻿// CubeBox.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+﻿// MaterialPhong.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
-#include <iostream>
-
 #include <BoxGeometry.h>
-#include <Mesh.h>
+#include <Lights/AmbientLight.h>
+#include <Lights/PointLight.h>
 #include <Materials/MeshBasicMaterial.h>
+#include <Materials/MeshLambertMaterial.h>
+#include <Materials/MeshPhongMaterial.h>
+#include <Mesh.h>
 #include <PerspectiveCamera.h>
 #include <Renderer.h>
 #include <Scene.h>
 #include <Texture.h>
+
+#include <iostream>
 
 #include <GLFW/glfw3.h>
 
@@ -21,7 +25,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 
-const char* title = "CubeBox";
+const char* title = "MaterialPhong";
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -47,17 +51,44 @@ shared_ptr<Renderer> renderer = nullptr;
 shared_ptr<Mesh> CreateCubeMesh() {
   shared_ptr<BoxGeometry> geometry = make_shared<BoxGeometry>();
 
-  const char* texturePath1 =
-      "D:/MyHub/Sinian/Resources/Textures/container.jpg";
+  const char* texturePath1 = "D:/MyHub/Sinian/Resources/Textures/container.jpg";
 
   shared_ptr<Texture> texture = Texture::ReadFile2Texture(texturePath1);
-  std::shared_ptr<MeshBasicMaterial> material =
-      make_shared<MeshBasicMaterial>();
+  // std::shared_ptr<MeshBasicMaterial> material =
+  //    make_shared<MeshBasicMaterial>();
+  std::shared_ptr<MeshPhongMaterial> material =
+      make_shared<MeshPhongMaterial>();
   material->Map(texture);
+  material->Specular(glm::vec3(0.2,0.2,0.2));
+  //material->Shininess(120.0f);
 
   std::shared_ptr<Mesh> mesh = make_shared<Mesh>(geometry, material);
 
   return mesh;
+}
+
+shared_ptr<PointLight> CreatePointLight() {
+  shared_ptr<PointLight> pointLight = make_shared<PointLight>();
+  pointLight->WorldPosition(1.2f, 1.0f, 2.0f);
+
+  shared_ptr<BoxGeometry> geometry = make_shared<BoxGeometry>();
+
+  std::shared_ptr<MeshBasicMaterial> material =
+      make_shared<MeshBasicMaterial>();
+  material->Color(glm::vec3(1.0f, 1.0f, 1.0f));
+
+  std::shared_ptr<Mesh> mesh = make_shared<Mesh>(geometry, material);
+  mesh->LocalScale(0.2f, 0.2f, 0.2f);
+
+  pointLight->Add(mesh);
+
+  return pointLight;
+}
+
+shared_ptr<AmbientLight> CreateAmbientLight() {
+  shared_ptr<AmbientLight> ambientLight =
+      make_shared<AmbientLight>(glm::vec3(1.0f, 1.0f, 1.0f), 0.2f);
+  return ambientLight;
 }
 
 int main() {
@@ -92,12 +123,18 @@ int main() {
   camera = make_shared<PerspectiveCamera>(
       50.0f, (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
   camera->WorldModelTranform(
-      glm::vec3(0.0f, 0.0f, 3.0f),
+      glm::vec3(0.0f, 0.0f, 5.0f),
       glm::vec3(glm::radians(0.0f), glm::radians(0.0f), glm::radians(0.0f)));
 
   shared_ptr<Scene> scene = make_shared<Scene>();
   shared_ptr<Mesh> mesh = CreateCubeMesh();
+
   scene->Add(mesh);
+
+  shared_ptr<PointLight> pointLight = CreatePointLight();
+  scene->Add(pointLight);
+
+  scene->Add(CreateAmbientLight());
 
   // Renderer
   renderer = make_shared<Renderer>();

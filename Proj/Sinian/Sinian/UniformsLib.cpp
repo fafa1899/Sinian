@@ -15,16 +15,11 @@ UniformsLib::UniformsLib() {
   common.emplace("opacity", 1.0f);
   common.emplace("map", nullptr);
 
+  specularmap.emplace("specularMap", nullptr);
+
   //
   lights.emplace("ambientLightColor", glm::vec3(0.0f, 0.0f, 0.0f));
   lights.emplace("pointLights", 0);
-
-  //    pointLights : {
-  // value:
-  //  [], properties : {
-  //  color : {}
-  //    , position : {}, decay : {}, distance : {}
-  //  }
 }
 
 }  // namespace Sinian

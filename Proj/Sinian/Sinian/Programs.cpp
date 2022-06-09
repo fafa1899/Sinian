@@ -1,8 +1,9 @@
 #include "Programs.h"
 #include "LightState.h"
-#include "Material.h"
-#include "MeshBasicMaterial.h"
-#include "MeshLambertMaterial.h"
+#include "Materials/Material.h"
+#include "Materials/MeshBasicMaterial.h"
+#include "Materials/MeshLambertMaterial.h"
+#include "Materials/MeshPhongMaterial.h"
 #include "Program.h"
 #include "ProgramParameters.h"
 #include "ShaderLib.h"
@@ -14,7 +15,9 @@ namespace Sinian {
 Programs::Programs() {}
 
 std::map<std::string, std::string> Programs::shaderIDs = {
-    {"MeshBasicMaterial", "basic"}, {"MeshLambertMaterial", "lambert"}};
+    {"MeshBasicMaterial", "basic"},
+    {"MeshLambertMaterial", "lambert"},
+    {"MeshPhongMaterial", "phong"}};
 
 std::shared_ptr<ProgramParameters> Programs::GetParameters(
     std::shared_ptr<Material> material, const LightState& lightState) {
@@ -42,6 +45,12 @@ std::shared_ptr<ProgramParameters> Programs::GetParameters(
     std::shared_ptr<MeshLambertMaterial> meshLambertMaterial =
         static_pointer_cast<MeshLambertMaterial>(material);
     parameters->map = meshLambertMaterial->Map() ? true : false;
+  } else if (material->Type() == "MeshPhongMaterial") {
+    //
+    std::shared_ptr<MeshPhongMaterial> meshPhongMaterial =
+        static_pointer_cast<MeshPhongMaterial>(material);
+    parameters->map = meshPhongMaterial->Map() ? true : false;
+    parameters->specularMap = meshPhongMaterial->SpecularMap() ? true : false;
   }
 
   parameters->numPointLights = int(lightState.point.size());

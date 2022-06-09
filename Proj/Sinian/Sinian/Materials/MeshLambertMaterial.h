@@ -18,9 +18,18 @@ class SINIAN_API MeshLambertMaterial : public Material {
   void Map(const std::shared_ptr<Sinian::Texture> texture);
   inline const std::shared_ptr<Sinian::Texture> Map() const { return map; }
 
- protected:
+  inline const std::shared_ptr<Sinian::Texture>& SpecularMap() {
+    return specularMap;
+  }
+  void SpecularMap(const std::shared_ptr<Sinian::Texture>& specularMap) {
+    this->specularMap = specularMap;
+  }
+
+ private:
   std::shared_ptr<Sinian::Texture> map;
   glm::vec3 color;
+
+  std::shared_ptr<Sinian::Texture> specularMap;
 };
 
 }  // namespace Sinian
